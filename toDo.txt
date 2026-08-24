@@ -1,0 +1,40 @@
+Hi Ilija,
+
+I hope you're doing well! Below is your task assignment, which should be completed within 3 hours.
+
+The main priority is to build the API endpoints first. The UI can be simple—don’t worry about styling or handling edge cases. Focus on functionality and making sure everything works correctly.
+
+📝 Task: Simple Task Management System
+⏳ Time Limit: 3 Hours
+
+Step 1: Setup Laravel Project Locally
+Set up a new Laravel project on your local machine.
+Use any solution you prefer to get the project running.
+Ensure your environment is fully set up before starting development.
+Step 2: Define Database Models & Relationships
+Project: id, name, description, due_date, created_at, updated_at (A project contains multiple tasks).
+Category: id, name, created_at, updated_at (Categories group tasks).
+Task: id, project_id, category_id, title, description, status, due_date, created_at, updated_at (Tasks belong to a project and category).
+Step 3: Develop the Required API Endpoints
+Your first focus should be on building the following API endpoints:
+
+Projects API – Create a project, list all projects, and filter them by due date.
+Categories API – Create and list categories.
+Tasks API – Create tasks, list all tasks with filters (by category and status), and mark tasks as completed.
+Step 4: Choose a UI (After APIs Are Done)
+Once the API is fully functional, you can choose one of these options to display the data:
+
+Option 1: Blade Views – Create simple Blade templates to display projects and tasks with filtering and task completion options.
+Option 2: React Application – Build a basic React app that fetches and displays projects and tasks dynamically.
+Step 5: Push Your Progress
+Push your code to a public GitHub repository within 3 hours, even if incomplete.
+Include the .env file and any necessary setup instructions.
+Send the GitHub repository link along with a few screenshots of your local environment.
+⚠️ Important Notes:
+✅ API First: Get all endpoints working before starting on the UI.
+✅ Keep It Simple: The UI does not need to be polished—just functional.
+✅ No Edge Cases: Focus on the core functionality, not handling every possible scenario.
+
+I am looking forward to your submission! Good luck!
+
+Igor Kostadinoski
