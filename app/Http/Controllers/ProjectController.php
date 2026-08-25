@@ -25,7 +25,8 @@ class ProjectController extends Controller
                 $query->whereDate('due_date', '<=', $date);
             })
             ->latest()
-            ->get();
+            ->paginate(5)
+            ->withQueryString();
     
         return ProjectResource::collection(
             resource: $projects,
