@@ -5,62 +5,56 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\TaskResource;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request): Response
     {
-        //
+        $validated = $request->validate([
+            'category' => "nullable|integer",
+            'status' => "nullable|string"
+        ]);
+
+        $tasks = Task::query()
+        ->when($validated['category'] ?? null, function($query, $category) {
+            $query->where('category_id', $category);
+        })
+        ->when($validated['status'] ?? null, function($query, $status) {
+            $query->where('status', $status);
+        })
+        ->latest()
+        ->paginate(5)
+        ->withQueryString();
+
+        return TaskResource::collection(
+            resource: $tasks
+        )->toResponse($request);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreTaskRequest $request)
     {
-        //
+        return new TaskResource(Task::create($request->validated()));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Task $task)
+    public function show(Request $request, Task $task, string $id): Response
     {
-        //
+        $task = Task::query()->findOrFail($id);
+
+        return (new TaskResource($task))
+            ->toResponse($request);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
+    public function update(Request $request, Task $task, string $id): Response
     {
-        //
-    }
+        $task = Task::query()->findOrFail($id);
+        
+        $task->update(['status' => 'completed']);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateTaskRequest $request, Task $task)
-    {
-        //
-    }
+        return (new TaskResource($task))
+            ->toResponse($request);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Task $task)
-    {
-        //
     }
 }
