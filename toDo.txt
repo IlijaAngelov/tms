@@ -18,9 +18,9 @@ Task: id, project_id, category_id, title, description, status, due_date, created
 Step 3: Develop the Required API Endpoints
 Your first focus should be on building the following API endpoints:
 
-Projects API – Create a project, list all projects, and filter them by due date.
-Categories API – Create and list categories.
-Tasks API – Create tasks, list all tasks with filters (by category and status), and mark tasks as completed.
+✅ Projects API – Create a project, list all projects, and filter them by due date.
+✅ Categories API – Create and list categories.
+✅ Tasks API – Create tasks, list all tasks with filters (by category and status), and mark tasks as completed.
 Step 4: Choose a UI (After APIs Are Done)
 Once the API is fully functional, you can choose one of these options to display the data:
 
@@ -37,4 +37,14 @@ Send the GitHub repository link along with a few screenshots of your local envir
 
 I am looking forward to your submission! Good luck!
 
+Relationships for APIs 
+Dont forget TESTS, Documentation and so on.
+https://www.youtube.com/watch?v=vrAdzOPSFiE -- For Documentation - Laravel Daily Video, JSON:API + Spatie Query Builder + Scramble API Docs
+https://laravel-news.com/automated-api-documentation-of-laravel-api-resources 
+
+For API's
+https://www.youtube.com/watch?v=YGqCZjdgJJk --(2h) Envato Tuts +
+https://www.youtube.com/watch?v=_zNi37BJVBk -- (8h) Acadea.io
+https://www.youtube.com/watch?v=7WSECfg4UXA -- (17m) - Laravel Daily MentorSHIP full API Project
+https://juststeveking.com/talks/stop-building-crud-apis/ -- Live coding video from Laravel Online Serbia. Different approach to boring CRUD APIs.
 Igor Kostadinoski
