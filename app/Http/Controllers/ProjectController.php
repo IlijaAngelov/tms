@@ -18,6 +18,7 @@ class ProjectController extends Controller
             "dueDateTo" => "nullable|date|after_or_equal:dueDateFrom"
         ]);
         $projects = Project::query()
+            ->with('tasks')
             ->when($validate['dueDateFrom'] ?? null, function($query, $date) {
                 $query->whereDate('due_date', '>=', $date);
             })

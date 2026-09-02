@@ -18,7 +18,8 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'dueDate' => $this->due_date
+            'dueDate' => $this->due_date,
+            'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
         ];
     }
 }
