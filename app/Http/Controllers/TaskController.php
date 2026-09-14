@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
@@ -15,14 +17,14 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'category' => "nullable|integer",
-            'status' => "nullable|string"
+            'status' => "nullable|string",
         ]);
 
         $tasks = Task::query()
-        ->when($validated['category'] ?? null, function($query, $category) {
+        ->when($validated['category'] ?? null, function ($query, $category): void {
             $query->where('category_id', $category);
         })
-        ->when($validated['status'] ?? null, function($query, $status) {
+        ->when($validated['status'] ?? null, function ($query, $status): void {
             $query->where('status', $status);
         })
         ->latest()
@@ -50,7 +52,7 @@ class TaskController extends Controller
     public function update(Request $request, Task $task, string $id): Response
     {
         $task = Task::query()->findOrFail($id);
-        
+
         $task->update(['status' => 'completed']);
 
         return (new TaskResource($task))

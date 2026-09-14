@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,13 +21,13 @@ class Task extends Model
         'due_date',
     ];
 
-    public function project() 
+    public function project()
     {
-        return $this->belongsTo(Project::class);    
+        return $this->belongsTo(Project::class);
     }
 
-    public function category() 
+    public function category()
     {
-        return $this->belongsTo(Category::class);   
+        return $this->belongsTo(Category::class);
     }
 }

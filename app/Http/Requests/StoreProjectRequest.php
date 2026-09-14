@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -29,10 +31,10 @@ class StoreProjectRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation(): void 
+    protected function prepareForValidation(): void
     {
         $this->merge([
-            'due_date' => $this->input('dueDate')
-        ]);  
+            'due_date' => $this->input('dueDate'),
+        ]);
     }
 }

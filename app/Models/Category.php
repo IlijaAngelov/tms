@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,13 +11,13 @@ class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
     ];
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);    
+        return $this->hasMany(Task::class);
     }
 }

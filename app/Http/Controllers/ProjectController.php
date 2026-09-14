@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProjectRequest;
@@ -15,20 +17,20 @@ class ProjectController extends Controller
     {
         $validate = $request->validate([
             "dueDateFrom" => "nullable|date",
-            "dueDateTo" => "nullable|date|after_or_equal:dueDateFrom"
+            "dueDateTo" => "nullable|date|after_or_equal:dueDateFrom",
         ]);
         $projects = Project::query()
             ->with('tasks')
-            ->when($validate['dueDateFrom'] ?? null, function($query, $date) {
+            ->when($validate['dueDateFrom'] ?? null, function ($query, $date): void {
                 $query->whereDate('due_date', '>=', $date);
             })
-            ->when($validate['dueDateTo'] ?? null, function($query, $date) {
+            ->when($validate['dueDateTo'] ?? null, function ($query, $date): void {
                 $query->whereDate('due_date', '<=', $date);
             })
             ->latest()
             ->paginate(5)
             ->withQueryString();
-    
+
         return ProjectResource::collection(
             resource: $projects,
         )->toResponse($request);
@@ -51,7 +53,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Project $project): void
     {
         //
     }
@@ -59,7 +61,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project): void
     {
         //
     }
@@ -67,7 +69,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
+    public function destroy(Project $project): void
     {
         //
     }
