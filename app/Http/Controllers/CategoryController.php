@@ -20,7 +20,7 @@ class CategoryController extends Controller
         )->toResponse($request);
     }
 
-    public function store(StoreCategoryRequest $request)
+    public function store(StoreCategoryRequest $request): CategoryResource
     {
         return new CategoryResource(Category::create($request->validated()));
     }
